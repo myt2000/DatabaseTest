@@ -11,7 +11,7 @@ class MyDatabaseHelper(val context: Context, name: String, version: Int) : SQLit
             "id integer primary key autoincrement," +
             "author text," +
             "price real," +
-            "page integer," +
+            "pages integer," +
             "name text)"
 
     private val createCategory = "create table Category (" +
@@ -22,6 +22,7 @@ class MyDatabaseHelper(val context: Context, name: String, version: Int) : SQLit
 
     override fun onCreate(db: SQLiteDatabase) {
         Log.d("数据库表创建", "onCreate: 开始创建" )
+//        db.execSQL("create table Category (id integer primary key autoincrement, category_name text, category_code integer)")
         db.execSQL(createBook)
         db.execSQL(createCategory)
         Log.d("数据库表创建", "onCreate: 创建成功" )
@@ -31,7 +32,9 @@ class MyDatabaseHelper(val context: Context, name: String, version: Int) : SQLit
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("drop table if exists Book")
         db.execSQL("drop table if exists Category")
-        onCreate(db)
 
+        onCreate(db)
     }
+
+
 }
