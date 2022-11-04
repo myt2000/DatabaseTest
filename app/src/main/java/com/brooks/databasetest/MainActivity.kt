@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 put("price", 16.95)
             }
             db.insert("Book", null, values2) // 输入第二条数据
-
+            db.close()
             Log.d("数据插入", "onCreate: 插入成功")
         }
         updateData.setOnClickListener {
@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         }
         replaceData.setOnClickListener {
             val db = dbHelper.writableDatabase
+            // 删除代码然后新增，中间抛出异常，导致删除回滚，增加额没有增加成功
             db.beginTransaction() // 开启事务
             try {
                 db.delete("Book", null, null)
