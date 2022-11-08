@@ -15,7 +15,7 @@
         tools:targetApi="31">
         <provider
             android:name=".DatabaseProvider"
-            android:authorities="com.brooks.databasetest"
+            android:authorities="com.brooks.databasetest.provider"
             android:enabled="true"
             android:exported="true"></provider>
 
